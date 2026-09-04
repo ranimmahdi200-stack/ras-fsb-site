@@ -40,7 +40,7 @@
   async function getReply(userText){
     try{
       // Target port 3000 directly so Live Server on port 5500 can communicate with Node backend
-      const res = await fetch('/api/chat', {        method:'POST',
+      const res = await fetch('/api/chat', {       method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({message:userText, history})
       });
