@@ -34,7 +34,9 @@
     if(t.includes('join') || t.includes('member')) return "You can join through the 'Become a Member' button — fill the form and our team will follow up by email.";
     if(t.includes('event') || t.includes('workshop')) return "Check the Activities section above — we run workshops, bootcamps and technical sessions throughout the year.";
     if(t.includes('project')) return "Have a look at the Projects section — recent builds include a gesture-controlled robotic arm and an autonomous rover.";
-    return "NOT AVAILABLE";
+    if(t.includes('team') || t.includes('who')) return "The team is listed in the Team section above — we are a group of students passionate about robotics and AI.";
+    return "Sorry, I couldn't come up with a reply just now. You can also check the website sections above for more info.";
+  
   }
 
   async function getReply(userText){
