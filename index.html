@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IEEE RAS|FSB SBC</title>
+<meta name="description" content="IEEE Robotics & Automation Society, Faculty of Sciences of Bizerte Student Branch. Building, learning and innovating together.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="bg-ambient"></div>
+<div class="bg-grid"></div>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="wrap nav-inner">
+    <a href="#home" class="nav-brand">
+      <div class="mark">
+        <img src="ras.png" alt="IEEE RAS logo" onerror="this.style.display='none'">
+      </div>
+      <div>
+        IEEE RAS
+        <span class="name-full">FSB Student Branch</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#platforms">Platforms</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://forms.gle/Um23A4VsM9TAgjFY6" class="btn btn-primary btn-sm">Join Us</a>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="wrap hero-inner">
+    <div class="reveal in">
+      <div class="eyebrow">Faculty of Sciences of Bizerte</div>
+      <h1 class="hero-title">IEEE RAS<br><span class="accent">FSB SB Chapter</span></h1>
+      <p class="hero-desc">A student-run community for people who'd rather build the machine than just study it. We run hands-on robotics, embedded systems and AI workshops, and connect students in Bizerte to the global IEEE RAS network.</p>
+      <div class="hero-ctas">
+        <a href="#about" class="btn btn-primary">Discover Us</a>
+        <a href="#team" class="btn btn-ghost">Meet Our Team</a>
+        <a href="#activities" class="btn btn-ghost">Explore Activities</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="orb-ring r1"></div>
+      <div class="orb-ring r2"></div>
+      <div class="logo-orb" id="logoOrb" title="Click me">
+        <img src="ras1.png" alt="IEEE RAS logo" class="orb-logo-img" onerror="this.style.display='none'">
+        <svg viewBox="0 0 100 100" fill="none" class="orb-fallback-svg">
+          <circle cx="50" cy="50" r="46" stroke="url(#g1)" stroke-width="1.5"/>
+          <circle cx="50" cy="28" r="7" fill="url(#g1)"/>
+          <path d="M50 35 L50 55 M35 55 L65 55 M35 55 L30 75 M65 55 L70 75" stroke="url(#g1)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="30" cy="80" r="4" fill="url(#g1)"/>
+          <circle cx="70" cy="80" r="4" fill="url(#g1)"/>
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="100" y2="100">
+              <stop offset="0" stop-color="#B23347"/>
+              <stop offset="1" stop-color="#8B3FA0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="logo-hint">// click the core</div>
+    </div>
+  </div>
+</section>
+
+<!-- Mini game modal -->
+<div class="game-modal" id="gameModal">
+  <div class="game-panel">
+    <button class="game-close" id="gameClose">&times;</button>
+    <div class="game-title">Signal Catch</div>
+    <div class="game-sub">Move to catch falling signal nodes. Missed pulses cost you a life.</div>
+    <canvas id="gameCanvas" width="400" height="280"></canvas>
+    <div class="game-footer">
+      <span>Score: <span class="game-score" id="gameScore">0</span></span>
+      <span id="gameLives">♥ ♥ ♥</span>
+      <span id="gameHint">tap / arrow keys</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity workshops modal -->
+<div class="activity-modal" id="activityModal">
+  <div class="activity-modal-panel glass">
+    <button class="activity-modal-close" id="activityModalClose">&times;</button>
+    <div class="activity-modal-head">
+      <span class="tag" id="activityModalTag"></span>
+      <h3 id="activityModalTitle"></h3>
+      <p id="activityModalDesc"></p>
+    </div>
+    <div class="activity-modal-list" id="activityModalList"></div>
+  </div>
+</div>
+
+<!-- ============ WHO ARE WE ============ -->
+<section class="section-pad about-video-section" id="about">
+  <video class="about-bg-video" autoplay muted loop playsinline onerror="this.style.display='none'">
+    <source src="zoom.mp4" type="video/mp4">
+  </video>
+  <div class="about-bg-overlay"></div>
+  <div class="wrap">
+    <div class="about-head reveal">
+      <h2 class="about-title">Who Are We?</h2>
+      <div class="title-underline"></div>
+    </div>
+
+    <div class="about-grid reveal">
+      <div class="about-left">
+        <h3 class="about-heading">Empowering Tomorrow's Engineers</h3>
+        <p class="about-lead">
+          <strong>IEEE Robotics and Automation Society — FSB Student Branch Chapter</strong>
+          is a community of passionate students driven by robotics, automation, embedded systems, artificial intelligence, and emerging technologies. Our chapter brings together students who want to learn, build, innovate, and share knowledge through hands-on projects, technical workshops, competitions, training sessions, and collaborative activities. We believe robotics is not only about technology — it is about creativity, teamwork, problem-solving, and turning ideas into real-world solutions.
+        </p>
+
+        <div class="mission-vision">
+          <div class="mv-item">
+            <div class="mv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg></div>
+            <h4>Our Mission</h4>
+            <p>To create an inspiring environment where students can develop their technical and soft skills, explore the world of robotics and automation, and transform their ideas into innovative projects.</p>
+          </div>
+          <div class="mv-item">
+            <div class="mv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <h4>Our Vision</h4>
+            <p>To build a strong robotics community that inspires innovation, empowers students, and connects them with the future of technology.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+          <div class="stat-number" data-target="15">0</div>
+          <div class="stat-label">Active Members</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8.5 14.5l2 2 4-4"/></svg></div>
+          <div class="stat-number" data-target="0">0</div>
+          <div class="stat-label">Events Organized</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m9 8 2 2 4-4"/></svg></div>
+          <div class="stat-number" data-target="5">0</div>
+          <div class="stat-label">Workshops Hosted</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"/></svg></div>
+          <div class="stat-number" data-target="1">0</div>
+          <div class="stat-label">Years Active</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITIES ============ -->
+<section class="section-pad" id="activities">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What we run</div>
+      <h2 class="section-title">Our Activities</h2>
+      <p class="section-sub">Practical, recurring, and open to every skill level — from your first line of embedded C to your first robotics competition.</p>
+    </div>
+    <div class="card-grid" id="activityGrid"></div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section-pad" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What we build</div>
+      <h2 class="section-title">Our Projects</h2>
+      <p class="section-sub">As a newly established IEEE RAS FSB chapter, we're just getting started! Exciting robotics, automation, and technology projects are currently in the making. Stay tuned for what's next.</p>
+    </div>
+    <div class="projects-scroll reveal" id="projectScroll"></div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="section-pad" id="team">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The people behind it</div>
+      <h2 class="section-title">Meet Our Team</h2>
+      <p class="section-sub">A small executive board keeping the branch running — updated every academic year.</p>
+    </div>
+    <div class="team-grid" id="teamGrid"></div>
+  </div>
+</section>
+
+<!-- ============ PLATFORMS ============ -->
+<section class="section-pad" id="platforms">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Stay in the loop</div>
+      <h2 class="section-title">Our Official Platforms</h2>
+      <p class="section-sub">Every event, recap and behind-the-scenes moment gets posted here first.</p>
+    </div>
+    <div class="platform-grid" id="platformGrid"></div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-section" id="join">
+  <div class="wrap reveal">
+    <div class="cta-panel">
+      <h2 class="cta-title">Ready to Shape the Future of Robotics?</h2>
+      <p class="cta-desc">Join a community of builders. No prior robotics experience required </p>
+      <a href="https://forms.gle/Um23A4VsM9TAgjFY6" class="btn btn-primary">Become a Member</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section-pad" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Find us</div>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-sub">Faculty of Sciences of Bizerte, Bizerte, Tunisia.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="map-frame glass">
+        <iframe loading="lazy" src="https://www.google.com/maps?q=Faculty%20of%20Sciences%20of%20Bizerte,%20Bizerte,%20Tunisia&output=embed" allowfullscreen></iframe>
+      </div>
+      <div class="contact-cards">
+        <a class="contact-item glass" href="mailto:ras-fsb@ieee.tn">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg></div>
+          <div><div class="ci-label">Email</div><div class="ci-value">ras.fsb@ieee.org</div></div>
+        </a>
+        <a class="contact-item glass" href="https://www.facebook.com/profile.php?id=61590487647070" target="_blank" rel="noopener">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></div>
+          <div><div class="ci-label">Facebook</div><div class="ci-value">IEEE RAS FSB SB</div></div>
+        </a>
+        <a class="contact-item glass" href="https://www.instagram.com/ieee.ras.fsb/" target="_blank" rel="noopener">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+          <div><div class="ci-label">Instagram</div><div class="ci-value">@ras.fsb</div></div>
+        </a>
+        <a class="contact-item glass" href="https://www.linkedin.com/company/ieee-ras-chapter-fsb-student-branch/" target="_blank" rel="noopener">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></div>
+          <div><div class="ci-label">LinkedIn</div><div class="ci-value">IEEE RAS FSB Student Branch</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <div class="mark">
+        <img src="ras.png" alt="IEEE RAS logo" onerror="this.style.display='none'">
+      </div>
+      IEEE RAS FSB SB
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-note">© 2026 IEEE RAS — Faculty of Sciences of Bizerte SB</div>
+  </div>
+</footer>
+
+<!-- ============ CHATBOT ============ -->
+<button class="chat-fab" id="chatFab">
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+</button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="who">
+      <span class="dot"></span>
+      <div>
+        <h4>RAS Assistant</h4>
+        <div class="sub">online · powered by Gemini</div>
+      </div>
+    </div>
+    <button class="chat-clear" id="chatClear">Clear</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Ask me anything…">
+    <button class="chat-send" id="chatSend">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script src="js/animations.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/game.js" defer></script>
+<script src="js/chatbot.js" defer></script>
+</body>
+</html>
