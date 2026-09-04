@@ -34,7 +34,7 @@
     if(t.includes('join') || t.includes('member')) return "You can join through the 'Become a Member' button — fill the form and our team will follow up by email.";
     if(t.includes('event') || t.includes('workshop')) return "Check the Activities section above — we run workshops, bootcamps and technical sessions throughout the year.";
     if(t.includes('project')) return "Have a look at the Projects section — recent builds include a gesture-controlled robotic arm and an autonomous rover.";
-    return "I'm running in offline demo mode right now — start server/server.js with a valid GEMINI_API_KEY to get real answers.";
+    return "NOT AVAILABLE";
   }
 
   async function getReply(userText){
