@@ -66,8 +66,7 @@ app.post('/api/chat', async (req, res) => {
     res.status(500).json({ error: 'Internal server error.' });
   }
 });
-
+module.exports = app;
 app.listen(PORT, () => {
   console.log(`IEEE RAS FSB SB server running on http://localhost:${PORT}`);
 });
-module.exports = app;
