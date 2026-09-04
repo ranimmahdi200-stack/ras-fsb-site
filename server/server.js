@@ -70,3 +70,4 @@ app.post('/api/chat', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`IEEE RAS FSB SB server running on http://localhost:${PORT}`);
 });
+module.exports = app;
